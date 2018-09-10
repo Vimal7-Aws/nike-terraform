@@ -1,7 +1,3 @@
 .idea
 .terraform
 .DS_Store
-
-
-git filter-branch --commit-filter 'export GIT_AUTHOR_NAME="Vimal"; \
-git commit-tree "$@"'
