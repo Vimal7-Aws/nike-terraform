@@ -13,7 +13,12 @@ resource "aws_ecs_task_definition" "task" {
     name      = "app"
     image     = var.container_image
     essential = true
-    portMappings = [{ containerPort = var.container_port protocol = "tcp" }]
+    portMappings = [
+      {
+        containerPort = var.container_port,
+        protocol      = "tcp"
+      }
+    ]
   }])
 }
 
@@ -51,8 +56,8 @@ resource "aws_ecs_service" "service" {
   launch_type     = "FARGATE"
 
   network_configuration {
-    subnets         = var.private_subnets
-    security_groups = [var.ecs_sg_id]
+    subnets          = var.private_subnets
+    security_groups  = [var.ecs_sg_id]
     assign_public_ip = false
   }
 
